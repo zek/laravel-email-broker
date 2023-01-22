@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Zek\EmailReset\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class EmailResetCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-email-reset';
 
     public $description = 'My command';
 
