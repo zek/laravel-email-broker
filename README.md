@@ -1,15 +1,15 @@
-# Simple email reset broker to verify current and new email.
+# Simple Laravel email broker.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/zek/laravel-email-reset.svg?style=flat-square)](https://packagist.org/packages/zek/laravel-email-reset)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/zek/laravel-email-reset/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/zek/laravel-email-reset/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/zek/laravel-email-reset/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/zek/laravel-email-reset/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/zek/laravel-email-reset.svg?style=flat-square)](https://packagist.org/packages/zek/laravel-email-reset)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/zek/laravel-email-broker.svg?style=flat-square)](https://packagist.org/packages/zek/laravel-email-broker)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/zek/laravel-email-broker/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/zek/laravel-email-broker/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/zek/laravel-email-broker/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/zek/laravel-email-broker/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/zek/laravel-email-broker.svg?style=flat-square)](https://packagist.org/packages/zek/laravel-email-broker)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-email-reset.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-email-reset)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-email-broker.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-email-broker)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
@@ -20,20 +20,20 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require zek/laravel-email-reset
+composer require zek/laravel-email-broker
 ```
 
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-email-reset-migrations"
+php artisan vendor:publish --tag="laravel-email-broker-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-email-reset-config"
+php artisan vendor:publish --tag="laravel-email-broker-config"
 ```
 
 This is the contents of the published config file:
@@ -46,14 +46,14 @@ return [
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-email-reset-views"
+php artisan vendor:publish --tag="laravel-email-broker-views"
 ```
 
 ## Usage
 
 ```php
-$emailReset = new Zek\EmailReset();
-echo $emailReset->echoPhrase('Hello, Zek!');
+$EmailBroker = new Zek\EmailBroker();
+echo $EmailBroker->echoPhrase('Hello, Zek!');
 ```
 
 ## Testing

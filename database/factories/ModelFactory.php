@@ -1,6 +1,6 @@
 <?php
 
-namespace Zek\EmailReset\Database\Factories;
+namespace Zek\EmailBroker\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

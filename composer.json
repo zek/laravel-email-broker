@@ -1,12 +1,12 @@
 {
-    "name": "zek/laravel-email-reset",
-    "description": "Simple email reset broker to verify current and new email.",
+    "name": "zek/laravel-email-broker",
+    "description": "Simple email broker to change email address with confirmation.",
     "keywords": [
         "zek",
         "laravel",
-        "laravel-email-reset"
+        "laravel-email-broker"
     ],
-    "homepage": "https://github.com/zek/laravel-email-reset",
+    "homepage": "https://github.com/zek/laravel-email-broker",
     "license": "MIT",
     "authors": [
         {
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Zek\\EmailReset\\": "src",
-            "Zek\\EmailReset\\Database\\Factories\\": "database/factories"
+            "Zek\\EmailBroker\\": "src",
+            "Zek\\EmailBroker\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zek\\EmailReset\\Tests\\": "tests"
+            "Zek\\EmailBroker\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Zek\\EmailReset\\EmailResetServiceProvider"
+                "Zek\\EmailBroker\\EmailBrokerServiceProvider"
             ],
             "aliases": {
-                "EmailReset": "Zek\\EmailReset\\Facades\\EmailReset"
+                "EmailBroker": "Zek\\EmailBroker\\Facades\\EmailBroker"
             }
         }
     },

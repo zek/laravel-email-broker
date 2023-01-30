@@ -8,11 +8,12 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('laravel_email_reset_table', function (Blueprint $table) {
+        Schema::create('email_changes', function (Blueprint $table) {
             $table->id();
 
-            // add fields
-
+            $table->string('old_email')->index();
+            $table->string('new_email');
+            $table->string('token');
             $table->timestamps();
         });
     }

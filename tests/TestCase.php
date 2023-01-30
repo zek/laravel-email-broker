@@ -1,10 +1,10 @@
 <?php
 
-namespace Zek\EmailReset\Tests;
+namespace Zek\EmailBroker\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Zek\EmailReset\EmailResetServiceProvider;
+use Zek\EmailBroker\EmailBrokerServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Zek\\EmailReset\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Zek\\EmailBroker\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            EmailResetServiceProvider::class,
+            EmailBrokerServiceProvider::class,
         ];
     }
 
@@ -29,7 +29,7 @@ class TestCase extends Orchestra
         config()->set('database.default', 'testing');
 
         /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-email-reset_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_laravel-email-broker_table.php.stub';
         $migration->up();
         */
     }

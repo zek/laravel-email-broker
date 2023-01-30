@@ -1,3 +1,3 @@
 # Changelog
 
-All notable changes to `laravel-email-reset` will be documented in this file.
+All notable changes to `laravel-email-broker` will be documented in this file.

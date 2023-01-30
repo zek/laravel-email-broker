@@ -1,5 +1,5 @@
 <?php
 
-use Zek\EmailReset\Tests\TestCase;
+use Zek\EmailBroker\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
