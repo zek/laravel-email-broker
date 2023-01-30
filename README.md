@@ -18,6 +18,7 @@ composer require zek/laravel-email-broker
 You can publish and run the migrations with:
 
 ```bash
+php artisan vendor:publish --tag="email-broker-migrations"
 php artisan migrate
 ```
 

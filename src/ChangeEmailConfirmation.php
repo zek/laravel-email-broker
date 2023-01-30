@@ -70,7 +70,7 @@ class ChangeEmailConfirmation extends Notification
             ->line(Lang::get('You are receiving this email because you requested to change your email address.'))
             ->line(Lang::get('New email address: :email', ['email' => $email]))
             ->action(Lang::get('Confirm new email address'), $url)
-            ->line(Lang::get('This email change request will expire in :count minutes.', ['count' => config('auth.email.'.config('auth.defaults.email').'.expire')]))
+            ->line(Lang::get('This email change request will expire in :count minutes.', ['count' => config('auth.emails.'.config('auth.defaults.emails').'.expire')]))
             ->line(Lang::get('If you did not change your email address, contact us.'));
     }
 

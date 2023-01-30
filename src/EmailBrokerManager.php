@@ -126,7 +126,7 @@ class EmailBrokerManager implements EmailBrokerFactory
      */
     protected function getConfig($name)
     {
-        return $this->app['config']["auth.email.{$name}"] ?? null;
+        return $this->app['config']["auth.emails.{$name}"] ?? null;
     }
 
     /**
