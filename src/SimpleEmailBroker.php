@@ -19,7 +19,6 @@ class SimpleEmailBroker implements EmailBrokerContract
      * Create a new email broker instance.
      *
      * @param  TokenRepositoryInterface  $tokens
-     * @param  \Illuminate\Contracts\Auth\UserProvider  $users
      */
     public function __construct(TokenRepositoryInterface $tokens)
     {

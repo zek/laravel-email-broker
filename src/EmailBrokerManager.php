@@ -122,11 +122,11 @@ class EmailBrokerManager implements EmailBrokerFactory
      * Get the password broker configuration.
      *
      * @param  string  $name
-     * @return array
+     * @return array|null
      */
     protected function getConfig($name)
     {
-        return $this->app['config']["auth.email.{$name}"];
+        return $this->app['config']["auth.email.{$name}"] ?? null;
     }
 
     /**

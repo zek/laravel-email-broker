@@ -22,7 +22,7 @@ class EmailBrokerServiceProvider extends PackageServiceProvider
      */
     public function registeringPackage()
     {
-        $this->app->singleton(EmailBrokerManager::class, function ($app) {
+        $this->app->bind(EmailBrokerManager::class, function ($app) {
             return new EmailBrokerManager($app);
         });
 
