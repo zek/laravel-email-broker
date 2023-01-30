@@ -9,21 +9,21 @@ interface EmailBroker
      *
      * @var string
      */
-    const CONFIRMATION_SENT = 'email.confirmation';
+    const CONFIRMATION_SENT = 'emails.confirmation';
 
     /**
      * Constant representing email changed successfully.
      *
      * @var string
      */
-    const EMAIL_CHANGED = 'email.changed';
+    const EMAIL_CHANGED = 'emails.changed';
 
     /**
      * Constant representing an invalid token.
      *
      * @var string
      */
-    const INVALID_TOKEN = 'email.token';
+    const INVALID_TOKEN = 'emails.token';
 
     /**
      * Send a confirmation notification to the user to change current email.

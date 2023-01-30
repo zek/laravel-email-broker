@@ -1,4 +1,4 @@
-# Simple Laravel email broker.
+# Simple Laravel Email Broker.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/zek/laravel-email-broker.svg?style=flat-square)](https://packagist.org/packages/zek/laravel-email-broker)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/zek/laravel-email-broker/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/zek/laravel-email-broker/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -6,14 +6,6 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/zek/laravel-email-broker.svg?style=flat-square)](https://packagist.org/packages/zek/laravel-email-broker)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-email-broker.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-email-broker)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -26,27 +18,28 @@ composer require zek/laravel-email-broker
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-email-broker-migrations"
 php artisan migrate
 ```
 
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-email-broker-config"
-```
-
-This is the contents of the published config file:
+Update contents of auth.php:
 
 ```php
 return [
+    'defaults' => [
+        'guard' => 'web',
+        'emails' => 'users', // <-- Add this line 
+    ],
+    // ...
+    // Add following lines below
+    'emails' => [
+        'users' => [
+            'model' => App\Models\User::class,
+            'table' => 'email_changes',
+            'expire' => 60, // 60 minutes
+            'length' => 6, // Generated token length
+        ]
+    ],
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-email-broker-views"
 ```
 
 ## Usage

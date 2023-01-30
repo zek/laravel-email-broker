@@ -143,7 +143,8 @@ class EmailBrokerManager implements EmailBrokerFactory
         return new DatabaseTokenRepository(
             $this->app['db']->connection($connection),
             $config['table'],
-            $config['expire']
+            $config['expire'],
+            $config['length'],
         );
     }
 

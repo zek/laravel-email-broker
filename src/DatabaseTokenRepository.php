@@ -31,12 +31,11 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
     protected int $expires;
 
     /**
-     * Minimum number of seconds before re-redefining the token.
+     * The length of generated token.
      *
      * @var int
      */
-    protected int $throttle;
-
+    protected int $length;
 
     /**
      * Create a new token repository instance.
@@ -45,11 +44,12 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
      * @param string $table
      * @param int $expires
      */
-    public function __construct(ConnectionInterface $connection, string $table, int $expires = 60)
+    public function __construct(ConnectionInterface $connection, string $table, int $expires = 60, int $length = 6)
     {
         $this->table = $table;
         $this->expires = $expires * 60;
         $this->connection = $connection;
+        $this->length = $length;
     }
 
     /**
@@ -177,7 +177,7 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
         }
 
         $token = '';
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < $this->length; $i++) {
             $token .= mt_rand(0, 9);
         }
         return $token;
