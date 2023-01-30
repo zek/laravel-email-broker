@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\UserProvider;
 use Mockery as m;
 use Zek\EmailBroker\Contracts\CanChangeEmail;
 use Zek\EmailBroker\Contracts\TokenRepositoryInterface;
-use Zek\EmailBroker\EmailBroker;
+use Zek\EmailBroker\SimpleEmailBroker;
 use Zek\EmailBroker\Contracts\EmailBroker as EmailBrokerContract;
 
 class EmailBrokerTest extends TestCase
@@ -46,7 +46,7 @@ class EmailBrokerTest extends TestCase
 
     protected function getBroker($mocks)
     {
-        return new EmailBroker($mocks['tokens'], $mocks['users']);
+        return new SimpleEmailBroker($mocks['tokens'], $mocks['users']);
     }
 
     protected function getMocks()

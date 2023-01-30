@@ -114,7 +114,7 @@ class EmailBrokerManager implements EmailBrokerFactory
             throw new InvalidArgumentException("Email broker [{$name}] is not defined.");
         }
 
-        return new EmailBroker(
+        return new SimpleEmailBroker(
             $this->createTokenRepository($config)
         );
     }

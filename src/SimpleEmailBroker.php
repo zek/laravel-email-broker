@@ -6,7 +6,7 @@ use Zek\EmailBroker\Contracts\CanChangeEmail as CanChangeEmailContract;
 use Zek\EmailBroker\Contracts\EmailBroker as EmailBrokerContract;
 use Zek\EmailBroker\Contracts\TokenRepositoryInterface;
 
-class EmailBroker implements EmailBrokerContract
+class SimpleEmailBroker implements EmailBrokerContract
 {
 
     /**
