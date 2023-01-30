@@ -5,9 +5,9 @@ namespace Zek\EmailBroker\Tests;
 use Illuminate\Contracts\Auth\UserProvider;
 use Mockery as m;
 use Zek\EmailBroker\Contracts\CanChangeEmail;
+use Zek\EmailBroker\Contracts\EmailBroker as EmailBrokerContract;
 use Zek\EmailBroker\Contracts\TokenRepositoryInterface;
 use Zek\EmailBroker\SimpleEmailBroker;
-use Zek\EmailBroker\Contracts\EmailBroker as EmailBrokerContract;
 
 class EmailBrokerTest extends TestCase
 {

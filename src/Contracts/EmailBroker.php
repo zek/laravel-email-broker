@@ -28,8 +28,8 @@ interface EmailBroker
     /**
      * Send a confirmation notification to the user to change current email.
      *
-     * @param  CanChangeEmail $user Auth user
-     * @param  string $newEmail Change new mail address
+     * @param  CanChangeEmail  $user Auth user
+     * @param  string  $newEmail Change new mail address
      * @return string
      */
     public function sendChangeEmailConfirmation(CanChangeEmail $user, string $newEmail);
@@ -37,11 +37,10 @@ interface EmailBroker
     /**
      * Change the user email address.
      *
-     * @param CanChangeEmail $user
-     * @param string $newEmail
-     * @param string $token
+     * @param  CanChangeEmail  $user
+     * @param  string  $newEmail
+     * @param  string  $token
      * @return mixed
      */
     public function confirmEmailChange(CanChangeEmail $user, string $newEmail, string $token);
-
 }

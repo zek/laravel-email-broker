@@ -2,7 +2,6 @@
 
 namespace Zek\EmailBroker;
 
-
 use InvalidArgumentException;
 use Zek\EmailBroker\Contracts\EmailBroker as EmailBrokerBrokerContract;
 use Zek\EmailBroker\Contracts\EmailBrokerFactory;
@@ -34,7 +33,7 @@ class EmailBrokerManager implements EmailBrokerFactory
     /**
      * Create a new PasswordBroker manager instance.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param  \Illuminate\Foundation\Application  $app
      */
     public function __construct($app)
     {
@@ -55,7 +54,7 @@ class EmailBrokerManager implements EmailBrokerFactory
     /**
      * Set the default password broker name.
      *
-     * @param string $name
+     * @param  string  $name
      * @return void
      */
     public function setDefaultDriver($name)
@@ -66,8 +65,8 @@ class EmailBrokerManager implements EmailBrokerFactory
     /**
      * Dynamically call the default driver instance.
      *
-     * @param string $method
-     * @param array $parameters
+     * @param  string  $method
+     * @param  array  $parameters
      * @return mixed
      */
     public function __call($method, $parameters)
@@ -78,7 +77,7 @@ class EmailBrokerManager implements EmailBrokerFactory
     /**
      * Attempt to get the broker from the local cache.
      *
-     * @param string $name
+     * @param  string  $name
      * @return EmailBrokerBrokerContract
      */
     public function broker($name = null)
@@ -101,7 +100,7 @@ class EmailBrokerManager implements EmailBrokerFactory
     /**
      * Resolve the given broker.
      *
-     * @param string $name
+     * @param  string  $name
      * @return EmailBrokerBrokerContract
      *
      * @throws \InvalidArgumentException
@@ -122,7 +121,7 @@ class EmailBrokerManager implements EmailBrokerFactory
     /**
      * Get the password broker configuration.
      *
-     * @param string $name
+     * @param  string  $name
      * @return array
      */
     protected function getConfig($name)
@@ -133,7 +132,7 @@ class EmailBrokerManager implements EmailBrokerFactory
     /**
      * Create a token repository instance based on the given configuration.
      *
-     * @param array $config
+     * @param  array  $config
      * @return TokenRepositoryInterface
      */
     protected function createTokenRepository(array $config)
@@ -147,5 +146,4 @@ class EmailBrokerManager implements EmailBrokerFactory
             $config['length'],
         );
     }
-
 }

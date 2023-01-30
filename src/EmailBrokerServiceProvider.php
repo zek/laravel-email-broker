@@ -40,5 +40,4 @@ class EmailBrokerServiceProvider extends PackageServiceProvider
     {
         return [EmailBrokerManager::class, EmailBrokerContract::class];
     }
-
 }

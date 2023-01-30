@@ -40,9 +40,9 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
     /**
      * Create a new token repository instance.
      *
-     * @param \Illuminate\Database\ConnectionInterface $connection
-     * @param string $table
-     * @param int $expires
+     * @param  \Illuminate\Database\ConnectionInterface  $connection
+     * @param  string  $table
+     * @param  int  $expires
      */
     public function __construct(ConnectionInterface $connection, string $table, int $expires = 60, int $length = 6)
     {
@@ -55,8 +55,8 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
     /**
      * Create a new token record.
      *
-     * @param CanChangeEmail $user
-     * @param string $newEmail
+     * @param  CanChangeEmail  $user
+     * @param  string  $newEmail
      * @return string
      */
     public function create(CanChangeEmail $user, string $newEmail)
@@ -73,7 +73,7 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
     /**
      * Delete all existing change tokens from the database.
      *
-     * @param CanChangeEmail $user
+     * @param  CanChangeEmail  $user
      * @return int
      */
     protected function deleteExisting(CanChangeEmail $user)
@@ -86,7 +86,7 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
     /**
      * Delete a token record by user.
      *
-     * @param CanChangeEmail $user
+     * @param  CanChangeEmail  $user
      * @return void
      */
     public function delete(CanChangeEmail $user)
@@ -107,9 +107,9 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
     /**
      * Build the record payload for the table.
      *
-     * @param CanChangeEmail $user
-     * @param string $newEmail
-     * @param string $token
+     * @param  CanChangeEmail  $user
+     * @param  string  $newEmail
+     * @param  string  $token
      * @return array
      */
     protected function getPayload(CanChangeEmail $user, $newEmail, $token)
@@ -118,25 +118,25 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
             'email' => $user->getCurrentEmail(),
             'new_email' => $newEmail,
             'token' => $token,
-            'created_at' => new Carbon
+            'created_at' => new Carbon,
         ];
     }
 
     /**
      * Determine if a token record exists and is valid.
      *
-     * @param CanChangeEmail $user
-     * @param string $token
+     * @param  CanChangeEmail  $user
+     * @param  string  $token
      * @return bool
      */
     public function exists(CanChangeEmail $user, string $newEmail, string $token): bool
     {
-        $record = (array)$this->getTable()
+        $record = (array) $this->getTable()
             ->where('email', $user->getCurrentEmail())
             ->first();
 
         return $record &&
-            !$this->tokenExpired($record['created_at']) &&
+            ! $this->tokenExpired($record['created_at']) &&
             $token === $record['token'] &&
             $newEmail === $record['new_email'];
     }
@@ -144,7 +144,7 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
     /**
      * Determine if the token has expired.
      *
-     * @param string $createdAt
+     * @param  string  $createdAt
      * @return bool
      */
     protected function tokenExpired($createdAt)
@@ -164,7 +164,6 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
         $this->getTable()->where('created_at', '<', $expiredAt)->delete();
     }
 
-
     /**
      * Create a new token for the user.
      *
@@ -180,8 +179,7 @@ class DatabaseTokenRepository implements TokenRepositoryInterface
         for ($i = 0; $i < $this->length; $i++) {
             $token .= mt_rand(0, 9);
         }
+
         return $token;
     }
-
-
 }

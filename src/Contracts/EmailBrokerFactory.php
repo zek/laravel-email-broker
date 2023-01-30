@@ -11,5 +11,4 @@ interface EmailBrokerFactory
      * @return mixed
      */
     public function broker($name = null);
-
 }

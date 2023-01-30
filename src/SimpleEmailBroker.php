@@ -8,7 +8,6 @@ use Zek\EmailBroker\Contracts\TokenRepositoryInterface;
 
 class SimpleEmailBroker implements EmailBrokerContract
 {
-
     /**
      * Token repository instance.
      *
@@ -19,8 +18,8 @@ class SimpleEmailBroker implements EmailBrokerContract
     /**
      * Create a new email broker instance.
      *
-     * @param TokenRepositoryInterface $tokens
-     * @param \Illuminate\Contracts\Auth\UserProvider $users
+     * @param  TokenRepositoryInterface  $tokens
+     * @param  \Illuminate\Contracts\Auth\UserProvider  $users
      */
     public function __construct(TokenRepositoryInterface $tokens)
     {
@@ -30,8 +29,8 @@ class SimpleEmailBroker implements EmailBrokerContract
     /**
      * Send a confirmation notification to the user to change current email.
      *
-     * @param CanChangeEmailContract $user
-     * @param string $newEmail Change new mail address
+     * @param  CanChangeEmailContract  $user
+     * @param  string  $newEmail Change new mail address
      * @return string
      */
     public function sendChangeEmailConfirmation(CanChangeEmailContract $user, string $newEmail)
@@ -52,14 +51,14 @@ class SimpleEmailBroker implements EmailBrokerContract
     /**
      * Change the user email address.
      *
-     * @param CanChangeEmailContract $user
-     * @param string $newEmail
-     * @param string $token
+     * @param  CanChangeEmailContract  $user
+     * @param  string  $newEmail
+     * @param  string  $token
      * @return string.
      */
     public function confirmEmailChange(CanChangeEmailContract $user, string $newEmail, string $token)
     {
-        if (!$this->tokens->exists($user, $newEmail, $token)) {
+        if (! $this->tokens->exists($user, $newEmail, $token)) {
             return static::INVALID_TOKEN;
         }
 
@@ -68,5 +67,4 @@ class SimpleEmailBroker implements EmailBrokerContract
 
         return static::EMAIL_CHANGED;
     }
-
 }

@@ -4,12 +4,11 @@ namespace Zek\EmailBroker;
 
 trait CanChangeEmail
 {
-
     /**
      * Send the email verification notification.
      *
-     * @param string $token
-     * @param string $email
+     * @param  string  $token
+     * @param  string  $email
      * @return void
      */
     public function sendChangeEmailNotification(string $token, string $email)
@@ -20,7 +19,7 @@ trait CanChangeEmail
     /**
      * Change current email address.
      *
-     * @param string $email
+     * @param  string  $email
      * @return void
      */
     public function changeEmail(string $email)
@@ -38,6 +37,4 @@ trait CanChangeEmail
     {
         return $this->email;
     }
-
-
 }
