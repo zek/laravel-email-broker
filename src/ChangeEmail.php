@@ -6,7 +6,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
 
-class ChangeEmailConfirmation extends Notification
+class ChangeEmail extends Notification
 {
     /**
      * The callback that should be used to create the email change URL.
@@ -70,8 +70,8 @@ class ChangeEmailConfirmation extends Notification
             ->line(Lang::get('You are receiving this email because you requested to change your email address.'))
             ->line(Lang::get('New email address: :email', ['email' => $email]))
             ->action(Lang::get('Confirm new email address'), $url)
-            ->line(Lang::get('This email change request will expire in :count minutes.', ['count' => config('auth.emails.'.config('auth.defaults.emails').'.expire')]))
-            ->line(Lang::get('If you did not change your email address, contact us.'));
+            ->line(Lang::get('This email change request will expire in :count minutes.', ['count' => $this->expireTime()]))
+            ->line(Lang::get('If you did not change your email address, please change your password to logout from all devices.'));
     }
 
     /**
@@ -83,12 +83,12 @@ class ChangeEmailConfirmation extends Notification
     protected function confirmationUrl($notifiable)
     {
         if (static::$createUrlCallback) {
-            return call_user_func(static::$createUrlCallback, $notifiable, $this->token);
+            return call_user_func(static::$createUrlCallback, $notifiable, $this->email, $this->token, $this->expireTime());
         }
 
         return url(route('email.confirm', [
-            'token' => $this->token,
             'email' => $this->email,
+            'token' => $this->token,
         ], false));
     }
 
@@ -112,5 +112,10 @@ class ChangeEmailConfirmation extends Notification
     public static function toMailUsing($callback)
     {
         static::$toMailCallback = $callback;
+    }
+
+    public function expireTime()
+    {
+        return config('auth.emails.'.config('auth.defaults.emails').'.expire');
     }
 }

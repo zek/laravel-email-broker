@@ -20,7 +20,7 @@ class EmailBrokerTest extends TestCase
     {
         $broker = $this->getBroker($mocks = $this->getMocks());
         $mocks['tokens']->shouldReceive('create')->once()->with($mocks['user'], 'email')->andReturn('token');
-        $mocks['user']->shouldReceive('sendChangeEmailNotification')->once()->with('token', 'email');
+        $mocks['user']->shouldReceive('sendChangeEmailConfirmation')->once()->with('token', 'email');
 
         $this->assertSame(EmailBrokerContract::CONFIRMATION_SENT, $broker->sendChangeEmailConfirmation($mocks['user'], 'email'));
     }

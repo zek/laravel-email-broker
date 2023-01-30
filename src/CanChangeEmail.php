@@ -2,18 +2,20 @@
 
 namespace Zek\EmailBroker;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 trait CanChangeEmail
 {
     /**
-     * Send the email verification notification.
+     * Send change email confirmation.
      *
      * @param  string  $token
      * @param  string  $email
      * @return void
      */
-    public function sendChangeEmailNotification(string $token, string $email)
+    public function sendChangeEmailConfirmation(string $token, string $email)
     {
-        $this->notify(new ChangeEmailConfirmation($token, $email));
+        $this->notify(new ChangeEmail($token, $email));
     }
 
     /**
@@ -25,6 +27,11 @@ trait CanChangeEmail
     public function changeEmail(string $email)
     {
         $this->email = $email;
+
+        if ($this instanceof MustVerifyEmail) {
+            $this->email_verified_at = null;
+        }
+
         $this->save();
     }
 

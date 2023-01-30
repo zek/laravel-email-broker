@@ -5,13 +5,13 @@ namespace Zek\EmailBroker\Contracts;
 interface CanChangeEmail
 {
     /**
-     * Send the email verification notification.
+     * Send change email confirmation.
      *
      * @param  string  $token
      * @param  string  $email
      * @return void
      */
-    public function sendChangeEmailNotification(string $token, string $email);
+    public function sendChangeEmailConfirmation(string $token, string $email);
 
     /**
      * Change current email address.

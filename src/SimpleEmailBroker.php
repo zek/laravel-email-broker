@@ -2,6 +2,7 @@
 
 namespace Zek\EmailBroker;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Zek\EmailBroker\Contracts\CanChangeEmail as CanChangeEmailContract;
 use Zek\EmailBroker\Contracts\EmailBroker as EmailBrokerContract;
 use Zek\EmailBroker\Contracts\TokenRepositoryInterface;
@@ -26,6 +27,25 @@ class SimpleEmailBroker implements EmailBrokerContract
     }
 
     /**
+     * Change current email address
+     * if email is verified, send a confirmation notification to the user to change current email
+     *
+     * @param  CanChangeEmailContract  $user
+     * @param  string  $newEmail Change new mail address
+     * @return string
+     */
+    public function changeEmail(CanChangeEmailContract $user, string $newEmail)
+    {
+        if ($user instanceof MustVerifyEmail && $user->hasVerifiedEmail()) {
+            return $this->sendChangeEmailConfirmation($user, $newEmail);
+        }
+
+        $user->changeEmail($newEmail);
+
+        return static::EMAIL_CHANGED;
+    }
+
+    /**
      * Send a confirmation notification to the user to change current email.
      *
      * @param  CanChangeEmailContract  $user
@@ -42,7 +62,7 @@ class SimpleEmailBroker implements EmailBrokerContract
         // Once we have the confirmation token, we are ready to send the message out to this
         // user with a link to change their email. We will then redirect back to
         // the current URI having nothing set in the session to indicate errors.
-        $user->sendChangeEmailNotification($token, $newEmail);
+        $user->sendChangeEmailConfirmation($token, $newEmail);
 
         return static::CONFIRMATION_SENT;
     }

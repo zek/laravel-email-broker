@@ -2,6 +2,8 @@
 
 namespace Zek\EmailBroker\Contracts;
 
+use Zek\EmailBroker\Contracts\CanChangeEmail as CanChangeEmailContract;
+
 interface EmailBroker
 {
     /**
@@ -24,6 +26,16 @@ interface EmailBroker
      * @var string
      */
     const INVALID_TOKEN = 'emails.token';
+
+    /**
+     * Change current email address
+     * if email is verified, send a confirmation notification to the user to change current email
+     *
+     * @param  CanChangeEmailContract  $user
+     * @param  string  $newEmail Change new mail address
+     * @return string
+     */
+    public function changeEmail(CanChangeEmailContract $user, string $newEmail);
 
     /**
      * Send a confirmation notification to the user to change current email.

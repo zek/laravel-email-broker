@@ -59,7 +59,7 @@ class EmailBrokerManager implements EmailBrokerFactory
      */
     public function setDefaultDriver($name)
     {
-        $this->app['config']['auth.defaults.email'] = $name;
+        $this->app['config']['auth.defaults.emails'] = $name;
     }
 
     /**
@@ -94,7 +94,7 @@ class EmailBrokerManager implements EmailBrokerFactory
      */
     public function getDefaultDriver()
     {
-        return $this->app['config']['auth.defaults.email'];
+        return $this->app['config']['auth.defaults.emails'];
     }
 
     /**
