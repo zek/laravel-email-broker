@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Facade;
  */
 class EmailBroker extends Facade
 {
-
     /**
      * Constant representing change email confirmation sent to current email.
      *
@@ -31,7 +30,7 @@ class EmailBroker extends Facade
      *
      * @var string
      */
-    const INVALID_TOKEN =  \Zek\EmailBroker\Contracts\EmailBroker::INVALID_TOKEN;
+    const INVALID_TOKEN = \Zek\EmailBroker\Contracts\EmailBroker::INVALID_TOKEN;
 
     protected static function getFacadeAccessor()
     {
